@@ -25,7 +25,7 @@ namespace library_project.Migrations
             };
 
             context.Customers.AddOrUpdate(customer1);
-            _ = context.SaveChanges();
+            context.SaveChanges();
 
             Book book1 = new Book
             {

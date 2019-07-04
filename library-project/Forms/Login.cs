@@ -44,10 +44,18 @@ namespace library_project.Forms
 
             else
             {
-                Dashboard dashboard = new Dashboard("Salam" + TxtNickname.Text + "!");
+
+                
+                Dashboard dashboard = new Dashboard();
                 this.Hide();
                 dashboard.Show();
+
             }
+        }
+
+        private void Login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

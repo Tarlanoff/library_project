@@ -16,3 +16,4 @@ C:\Users\Thinkpad\source\repos\library-project\library-project\obj\Debug\library
 C:\Users\Thinkpad\source\repos\library-project\library-project\obj\Debug\library_project.Migrations.Data.resources
 C:\Users\Thinkpad\source\repos\library-project\library-project\obj\Debug\library_project.Forms.Login.resources
 C:\Users\Thinkpad\source\repos\library-project\library-project\obj\Debug\library_project.Forms.Dashboard.resources
+C:\Users\Thinkpad\source\repos\library-project\library-project\obj\Debug\library_project.Forms.Customer.resources
