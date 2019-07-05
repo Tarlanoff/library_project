@@ -42,6 +42,7 @@
             this.LblCustomer = new System.Windows.Forms.Label();
             this.BtnCustomers = new System.Windows.Forms.Button();
             this.BtnBooks = new System.Windows.Forms.Button();
+            this.BtnOrderClose = new System.Windows.Forms.Button();
             this.PnlNewOrder.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,6 +73,7 @@
             // PnlNewOrder
             // 
             this.PnlNewOrder.BackColor = System.Drawing.Color.Transparent;
+            this.PnlNewOrder.Controls.Add(this.BtnOrderClose);
             this.PnlNewOrder.Controls.Add(this.DTPReturnTime);
             this.PnlNewOrder.Controls.Add(this.BtnNOAccept);
             this.PnlNewOrder.Controls.Add(this.LblBook);
@@ -97,7 +99,7 @@
             // 
             // BtnNOAccept
             // 
-            this.BtnNOAccept.BackColor = System.Drawing.Color.Maroon;
+            this.BtnNOAccept.BackColor = System.Drawing.Color.OrangeRed;
             this.BtnNOAccept.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnNOAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BtnNOAccept.Location = new System.Drawing.Point(164, 172);
@@ -110,7 +112,9 @@
             // 
             // LblBook
             // 
-            this.LblBook.BackColor = System.Drawing.Color.White;
+            this.LblBook.BackColor = System.Drawing.Color.Transparent;
+            this.LblBook.Font = new System.Drawing.Font("Papyrus", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblBook.ForeColor = System.Drawing.Color.OrangeRed;
             this.LblBook.Location = new System.Drawing.Point(39, 84);
             this.LblBook.Name = "LblBook";
             this.LblBook.Size = new System.Drawing.Size(74, 25);
@@ -120,17 +124,21 @@
             // 
             // LblReturnTime
             // 
-            this.LblReturnTime.BackColor = System.Drawing.Color.White;
+            this.LblReturnTime.BackColor = System.Drawing.Color.Transparent;
+            this.LblReturnTime.Font = new System.Drawing.Font("Papyrus", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblReturnTime.ForeColor = System.Drawing.Color.OrangeRed;
             this.LblReturnTime.Location = new System.Drawing.Point(199, 15);
             this.LblReturnTime.Name = "LblReturnTime";
-            this.LblReturnTime.Size = new System.Drawing.Size(74, 25);
+            this.LblReturnTime.Size = new System.Drawing.Size(140, 25);
             this.LblReturnTime.TabIndex = 9;
             this.LblReturnTime.Text = "Return Time";
             this.LblReturnTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LblPrice
             // 
-            this.LblPrice.BackColor = System.Drawing.Color.White;
+            this.LblPrice.BackColor = System.Drawing.Color.Transparent;
+            this.LblPrice.Font = new System.Drawing.Font("Papyrus", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblPrice.ForeColor = System.Drawing.Color.OrangeRed;
             this.LblPrice.Location = new System.Drawing.Point(208, 86);
             this.LblPrice.Name = "LblPrice";
             this.LblPrice.Size = new System.Drawing.Size(74, 25);
@@ -164,10 +172,12 @@
             // 
             // LblCustomer
             // 
-            this.LblCustomer.BackColor = System.Drawing.Color.White;
-            this.LblCustomer.Location = new System.Drawing.Point(41, 15);
+            this.LblCustomer.BackColor = System.Drawing.Color.Transparent;
+            this.LblCustomer.Font = new System.Drawing.Font("Papyrus", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblCustomer.ForeColor = System.Drawing.Color.OrangeRed;
+            this.LblCustomer.Location = new System.Drawing.Point(16, 15);
             this.LblCustomer.Name = "LblCustomer";
-            this.LblCustomer.Size = new System.Drawing.Size(74, 25);
+            this.LblCustomer.Size = new System.Drawing.Size(121, 25);
             this.LblCustomer.TabIndex = 0;
             this.LblCustomer.Text = "Customer";
             this.LblCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -194,6 +204,18 @@
             this.BtnBooks.TabIndex = 6;
             this.BtnBooks.Text = "Books";
             this.BtnBooks.UseVisualStyleBackColor = false;
+            // 
+            // BtnOrderClose
+            // 
+            this.BtnOrderClose.BackColor = System.Drawing.Color.Red;
+            this.BtnOrderClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BtnOrderClose.Location = new System.Drawing.Point(338, 0);
+            this.BtnOrderClose.Name = "BtnOrderClose";
+            this.BtnOrderClose.Size = new System.Drawing.Size(101, 34);
+            this.BtnOrderClose.TabIndex = 13;
+            this.BtnOrderClose.Text = "Close";
+            this.BtnOrderClose.UseVisualStyleBackColor = false;
+            this.BtnOrderClose.Click += new System.EventHandler(this.BtnOrderClose_Click);
             // 
             // Dashboard
             // 
@@ -235,5 +257,6 @@
         private System.Windows.Forms.Button BtnCustomers;
         private System.Windows.Forms.DateTimePicker DTPReturnTime;
         private System.Windows.Forms.Button BtnBooks;
+        private System.Windows.Forms.Button BtnOrderClose;
     }
 }

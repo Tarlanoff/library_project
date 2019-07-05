@@ -139,5 +139,10 @@ namespace library_project.Forms
             Customer customer = new Customer();
             customer.Show();
         }
+
+        private void BtnOrderClose_Click(object sender, EventArgs e)
+        {
+            PnlNewOrder.Visible = false;
+        }
     }
 }
