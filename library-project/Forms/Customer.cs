@@ -28,7 +28,7 @@ namespace library_project.Forms
             FillCustomerList();
         }
 
-
+        //fill customers list func
         private void FillCustomerList()
         {
             DgvCustomers.Rows.Clear();
@@ -45,12 +45,13 @@ namespace library_project.Forms
         }
 
 
-
+        //reset customers list
         private void ResetCustomersList()
         {
             DgvCustomers.Rows.Clear();
         }
 
+        //reset new customer form
         private void ResetNewCustomerForm()
         {
             TxtNCName.Text = string.Empty;
@@ -60,13 +61,16 @@ namespace library_project.Forms
 
         }
 
+        //customers form close event
         private void Customer_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
             Dashboard dashboard = new Dashboard();
-            dashboard.Show();
+            
         }
 
+
+        //create new customer event
         private void BtnNewCustomer_Click(object sender, EventArgs e)
         {
             PnlAddNC.Visible = true;
@@ -76,6 +80,7 @@ namespace library_project.Forms
             DTPBirthday.Value = DateTime.Now;
         }
 
+        //add new customer func
         private void BtnAddNC_Click(object sender, EventArgs e)
         {
             var customer = new library_project.Models.Customer();
@@ -98,11 +103,13 @@ namespace library_project.Forms
 
         }
 
+        //new customer close event
         private void BtnNCClose_Click(object sender, EventArgs e)
         {
             PnlAddNC.Visible = false;
         }
 
+        //delete an existing customer func
         private void BtnDeleteCustomer_Click(object sender, EventArgs e)
         {
             DialogResult r = MessageBox.Show("Are you sure?", "Delete?", MessageBoxButtons.YesNo);
@@ -119,6 +126,7 @@ namespace library_project.Forms
 
         }
 
+        //select an existing customer func
         private void DgvCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             BtnAddNC.Enabled = false;
@@ -130,26 +138,30 @@ namespace library_project.Forms
 
         private void DgvCustomers_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            BtnAddNC.Enabled = false;
-            BtnDeleteCustomer.Enabled = true;
+            
 
             int Id = Convert.ToInt32(DgvCustomers.Rows[e.RowIndex].Cells[0].Value.ToString());
             SelectedCustomer = _context.Customers.Find(Id);
         }
 
-
+        //update an existing customer event
         private void BtnUpdateCustomer_Click(object sender, EventArgs e)
         {
-            PnlAddNC.Visible = true;
-            BtnAddNC.Visible = false;
-            BtnCustomerUpd.Visible = true;
+            
 
-            TxtNCName.Text = SelectedCustomer.Name;
-            TxtNCSurname.Text = SelectedCustomer.Surname;
-            TxtNCPhoneNo.Text = SelectedCustomer.PhoneNumber;
-            DTPBirthday.Value = SelectedCustomer.Birthday;
+                TxtNCName.Text = SelectedCustomer.Name;
+                TxtNCSurname.Text = SelectedCustomer.Surname;
+                TxtNCPhoneNo.Text = SelectedCustomer.PhoneNumber;
+                DTPBirthday.Value = SelectedCustomer.Birthday;
+
+                PnlAddNC.Visible = true;
+                BtnAddNC.Visible = false;
+                BtnCustomerUpd.Visible = true;
+            
+            
         }
 
+        //update an existing customer func
         private void BtnCustomerUpd_Click(object sender, EventArgs e)
         {
             
@@ -167,6 +179,29 @@ namespace library_project.Forms
             ResetNewCustomerForm();
 
             MessageBox.Show("Information successfully updated!");
+        }
+
+        //customer searching func
+        private void SearchCustomer()
+        {
+            DgvCustomers.Rows.Clear();
+            List<library_project.Models.Customer> customers = _context.Customers.Where(c => c.Name.Contains(TxtSearchCustomer.Text)
+                                                                                    || c.Surname.Contains(TxtSearchCustomer.Text)).ToList();
+            foreach (var item in customers)
+            {
+                DgvCustomers.Rows.Add(item.Id,
+                                      item.Name,
+                                      item.Surname,
+                                      item.PhoneNumber,
+                                      item.Birthday,
+                                      item.CreateAt);
+            }
+        }
+
+        //customer search event
+        private void TxtSearchCustomer_TextChanged(object sender, EventArgs e)
+        {
+            SearchCustomer();
         }
     }
 }

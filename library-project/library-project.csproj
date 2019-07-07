@@ -54,6 +54,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\LibraryContext.cs" />
+    <Compile Include="Forms\Admin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Admin.Designer.cs">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Books.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,14 @@
     <Compile Include="Migrations\201907021432002_Data.Designer.cs">
       <DependentUpon>201907021432002_Data.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907061539486_AddPriceToOrder.cs" />
+    <Compile Include="Migrations\201907061539486_AddPriceToOrder.Designer.cs">
+      <DependentUpon>201907061539486_AddPriceToOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907061626131_PriceDefaultValue.cs" />
+    <Compile Include="Migrations\201907061626131_PriceDefaultValue.Designer.cs">
+      <DependentUpon>201907061626131_PriceDefaultValue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Book.cs" />
@@ -93,6 +107,9 @@
     <Compile Include="Models\Order.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Admin.resx">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Books.resx">
       <DependentUpon>Books.cs</DependentUpon>
     </EmbeddedResource>
@@ -110,6 +127,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907021432002_Data.resx">
       <DependentUpon>201907021432002_Data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907061539486_AddPriceToOrder.resx">
+      <DependentUpon>201907061539486_AddPriceToOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907061626131_PriceDefaultValue.resx">
+      <DependentUpon>201907061626131_PriceDefaultValue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

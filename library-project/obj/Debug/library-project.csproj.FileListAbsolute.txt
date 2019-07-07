@@ -17,3 +17,7 @@ C:\Users\Thinkpad\source\repos\library-project\library-project\obj\Debug\library
 C:\Users\Thinkpad\source\repos\library-project\library-project\obj\Debug\library_project.Forms.Login.resources
 C:\Users\Thinkpad\source\repos\library-project\library-project\obj\Debug\library_project.Forms.Dashboard.resources
 C:\Users\Thinkpad\source\repos\library-project\library-project\obj\Debug\library_project.Forms.Customer.resources
+C:\Users\Thinkpad\source\repos\library-project\library-project\obj\Debug\library_project.Forms.Books.resources
+C:\Users\Thinkpad\source\repos\library-project\library-project\obj\Debug\library_project.Forms.Admin.resources
+C:\Users\Thinkpad\source\repos\library-project\library-project\obj\Debug\library_project.Migrations.AddPriceToOrder.resources
+C:\Users\Thinkpad\source\repos\library-project\library-project\obj\Debug\library_project.Migrations.PriceDefaultValue.resources

@@ -31,26 +31,26 @@
             this.BtnUpdateBook = new System.Windows.Forms.Button();
             this.BtnDeleteBook = new System.Windows.Forms.Button();
             this.BtnBookUpd = new System.Windows.Forms.Button();
-            this.PnlAddNC = new System.Windows.Forms.Panel();
-            this.BtnNCClose = new System.Windows.Forms.Button();
-            this.BtnAddNB = new System.Windows.Forms.Button();
-            this.TxtNCSurname = new System.Windows.Forms.TextBox();
+            this.PnlNewBook = new System.Windows.Forms.Panel();
+            this.TxtNBCount = new System.Windows.Forms.TextBox();
+            this.LblNBCount = new System.Windows.Forms.Label();
+            this.BtnNBClose = new System.Windows.Forms.Button();
+            this.BtnAddNewBook = new System.Windows.Forms.Button();
+            this.TxtNBPrice = new System.Windows.Forms.TextBox();
             this.LblNBPrice = new System.Windows.Forms.Label();
-            this.TxtNCName = new System.Windows.Forms.TextBox();
+            this.TxtNBName = new System.Windows.Forms.TextBox();
             this.LblNCName = new System.Windows.Forms.Label();
             this.BtnNewBook = new System.Windows.Forms.Button();
             this.LblBooks = new System.Windows.Forms.Label();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DgvBooks = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DgvCustomers = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.LblNBCount = new System.Windows.Forms.Label();
-            this.PnlAddNC.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvCustomers)).BeginInit();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TxtSearchBook = new System.Windows.Forms.TextBox();
+            this.LblSearchBook = new System.Windows.Forms.Label();
+            this.PnlNewBook.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvBooks)).BeginInit();
             this.SuspendLayout();
             // 
             // BtnUpdateBook
@@ -63,6 +63,7 @@
             this.BtnUpdateBook.TabIndex = 11;
             this.BtnUpdateBook.Text = "Update Book Info";
             this.BtnUpdateBook.UseVisualStyleBackColor = false;
+            this.BtnUpdateBook.Click += new System.EventHandler(this.BtnUpdateBook_Click);
             // 
             // BtnDeleteBook
             // 
@@ -74,62 +75,82 @@
             this.BtnDeleteBook.TabIndex = 10;
             this.BtnDeleteBook.Text = "Delete Book";
             this.BtnDeleteBook.UseVisualStyleBackColor = false;
+            this.BtnDeleteBook.Click += new System.EventHandler(this.BtnDeleteBook_Click);
             // 
             // BtnBookUpd
             // 
             this.BtnBookUpd.BackColor = System.Drawing.Color.OrangeRed;
-            this.BtnBookUpd.Location = new System.Drawing.Point(216, 271);
+            this.BtnBookUpd.Location = new System.Drawing.Point(216, 210);
             this.BtnBookUpd.Name = "BtnBookUpd";
             this.BtnBookUpd.Size = new System.Drawing.Size(126, 55);
             this.BtnBookUpd.TabIndex = 11;
             this.BtnBookUpd.Text = "Update Book Information";
             this.BtnBookUpd.UseVisualStyleBackColor = false;
             this.BtnBookUpd.Visible = false;
+            this.BtnBookUpd.Click += new System.EventHandler(this.BtnBookUpd_Click);
             // 
-            // PnlAddNC
+            // PnlNewBook
             // 
-            this.PnlAddNC.BackColor = System.Drawing.Color.Orange;
-            this.PnlAddNC.Controls.Add(this.textBox1);
-            this.PnlAddNC.Controls.Add(this.LblNBCount);
-            this.PnlAddNC.Controls.Add(this.BtnBookUpd);
-            this.PnlAddNC.Controls.Add(this.BtnNCClose);
-            this.PnlAddNC.Controls.Add(this.BtnAddNB);
-            this.PnlAddNC.Controls.Add(this.TxtNCSurname);
-            this.PnlAddNC.Controls.Add(this.LblNBPrice);
-            this.PnlAddNC.Controls.Add(this.TxtNCName);
-            this.PnlAddNC.Controls.Add(this.LblNCName);
-            this.PnlAddNC.Location = new System.Drawing.Point(216, 75);
-            this.PnlAddNC.Name = "PnlAddNC";
-            this.PnlAddNC.Size = new System.Drawing.Size(544, 359);
-            this.PnlAddNC.TabIndex = 9;
-            this.PnlAddNC.Visible = false;
+            this.PnlNewBook.BackColor = System.Drawing.Color.Orange;
+            this.PnlNewBook.Controls.Add(this.TxtNBCount);
+            this.PnlNewBook.Controls.Add(this.LblNBCount);
+            this.PnlNewBook.Controls.Add(this.BtnBookUpd);
+            this.PnlNewBook.Controls.Add(this.BtnNBClose);
+            this.PnlNewBook.Controls.Add(this.BtnAddNewBook);
+            this.PnlNewBook.Controls.Add(this.TxtNBPrice);
+            this.PnlNewBook.Controls.Add(this.LblNBPrice);
+            this.PnlNewBook.Controls.Add(this.TxtNBName);
+            this.PnlNewBook.Controls.Add(this.LblNCName);
+            this.PnlNewBook.Location = new System.Drawing.Point(219, 98);
+            this.PnlNewBook.Name = "PnlNewBook";
+            this.PnlNewBook.Size = new System.Drawing.Size(544, 359);
+            this.PnlNewBook.TabIndex = 9;
+            this.PnlNewBook.Visible = false;
             // 
-            // BtnNCClose
+            // TxtNBCount
             // 
-            this.BtnNCClose.BackColor = System.Drawing.Color.Red;
-            this.BtnNCClose.Location = new System.Drawing.Point(466, 8);
-            this.BtnNCClose.Name = "BtnNCClose";
-            this.BtnNCClose.Size = new System.Drawing.Size(75, 23);
-            this.BtnNCClose.TabIndex = 10;
-            this.BtnNCClose.Text = "Close";
-            this.BtnNCClose.UseVisualStyleBackColor = false;
+            this.TxtNBCount.Location = new System.Drawing.Point(216, 168);
+            this.TxtNBCount.Name = "TxtNBCount";
+            this.TxtNBCount.Size = new System.Drawing.Size(126, 20);
+            this.TxtNBCount.TabIndex = 13;
             // 
-            // BtnAddNB
+            // LblNBCount
             // 
-            this.BtnAddNB.BackColor = System.Drawing.Color.OrangeRed;
-            this.BtnAddNB.Location = new System.Drawing.Point(216, 210);
-            this.BtnAddNB.Name = "BtnAddNB";
-            this.BtnAddNB.Size = new System.Drawing.Size(126, 55);
-            this.BtnAddNB.TabIndex = 8;
-            this.BtnAddNB.Text = "Create New Book";
-            this.BtnAddNB.UseVisualStyleBackColor = false;
+            this.LblNBCount.AutoSize = true;
+            this.LblNBCount.Location = new System.Drawing.Point(217, 136);
+            this.LblNBCount.Name = "LblNBCount";
+            this.LblNBCount.Size = new System.Drawing.Size(35, 13);
+            this.LblNBCount.TabIndex = 12;
+            this.LblNBCount.Text = "Count";
             // 
-            // TxtNCSurname
+            // BtnNBClose
             // 
-            this.TxtNCSurname.Location = new System.Drawing.Point(216, 101);
-            this.TxtNCSurname.Name = "TxtNCSurname";
-            this.TxtNCSurname.Size = new System.Drawing.Size(126, 20);
-            this.TxtNCSurname.TabIndex = 3;
+            this.BtnNBClose.BackColor = System.Drawing.Color.Red;
+            this.BtnNBClose.Location = new System.Drawing.Point(466, 8);
+            this.BtnNBClose.Name = "BtnNBClose";
+            this.BtnNBClose.Size = new System.Drawing.Size(75, 23);
+            this.BtnNBClose.TabIndex = 10;
+            this.BtnNBClose.Text = "Close";
+            this.BtnNBClose.UseVisualStyleBackColor = false;
+            this.BtnNBClose.Click += new System.EventHandler(this.BtnNBClose_Click_1);
+            // 
+            // BtnAddNewBook
+            // 
+            this.BtnAddNewBook.BackColor = System.Drawing.Color.OrangeRed;
+            this.BtnAddNewBook.Location = new System.Drawing.Point(216, 210);
+            this.BtnAddNewBook.Name = "BtnAddNewBook";
+            this.BtnAddNewBook.Size = new System.Drawing.Size(126, 55);
+            this.BtnAddNewBook.TabIndex = 8;
+            this.BtnAddNewBook.Text = "Create New Book";
+            this.BtnAddNewBook.UseVisualStyleBackColor = false;
+            this.BtnAddNewBook.Click += new System.EventHandler(this.BtnAddNewBook_Click);
+            // 
+            // TxtNBPrice
+            // 
+            this.TxtNBPrice.Location = new System.Drawing.Point(216, 101);
+            this.TxtNBPrice.Name = "TxtNBPrice";
+            this.TxtNBPrice.Size = new System.Drawing.Size(126, 20);
+            this.TxtNBPrice.TabIndex = 3;
             // 
             // LblNBPrice
             // 
@@ -140,12 +161,12 @@
             this.LblNBPrice.TabIndex = 2;
             this.LblNBPrice.Text = "Price";
             // 
-            // TxtNCName
+            // TxtNBName
             // 
-            this.TxtNCName.Location = new System.Drawing.Point(216, 40);
-            this.TxtNCName.Name = "TxtNCName";
-            this.TxtNCName.Size = new System.Drawing.Size(126, 20);
-            this.TxtNCName.TabIndex = 1;
+            this.TxtNBName.Location = new System.Drawing.Point(216, 40);
+            this.TxtNBName.Name = "TxtNBName";
+            this.TxtNBName.Size = new System.Drawing.Size(126, 20);
+            this.TxtNBName.TabIndex = 1;
             // 
             // LblNCName
             // 
@@ -166,6 +187,7 @@
             this.BtnNewBook.TabIndex = 8;
             this.BtnNewBook.Text = "New Book";
             this.BtnNewBook.UseVisualStyleBackColor = false;
+            this.BtnNewBook.Click += new System.EventHandler(this.BtnNewBook_Click);
             // 
             // LblBooks
             // 
@@ -179,25 +201,21 @@
             this.LblBooks.TabIndex = 7;
             this.LblBooks.Text = "Books";
             // 
-            // Column5
+            // DgvBooks
             // 
-            this.Column5.HeaderText = "Birthday";
-            this.Column5.Name = "Column5";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Phone Number";
-            this.Column4.Name = "Column4";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Surname";
-            this.Column3.Name = "Column3";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Name";
-            this.Column2.Name = "Column2";
+            this.DgvBooks.AllowUserToAddRows = false;
+            this.DgvBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DgvBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvBooks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4});
+            this.DgvBooks.Location = new System.Drawing.Point(219, 98);
+            this.DgvBooks.Name = "DgvBooks";
+            this.DgvBooks.Size = new System.Drawing.Size(544, 193);
+            this.DgvBooks.TabIndex = 6;
+            this.DgvBooks.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvBooks_RowHeaderMouseClick);
             // 
             // Column1
             // 
@@ -206,58 +224,59 @@
             this.Column1.Name = "Column1";
             this.Column1.Visible = false;
             // 
-            // Column6
+            // Column2
             // 
-            this.Column6.HeaderText = "CreatedAt";
-            this.Column6.Name = "Column6";
+            this.Column2.HeaderText = "Name";
+            this.Column2.Name = "Column2";
             // 
-            // DgvCustomers
+            // Column3
             // 
-            this.DgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6});
-            this.DgvCustomers.Location = new System.Drawing.Point(216, 98);
-            this.DgvCustomers.Name = "DgvCustomers";
-            this.DgvCustomers.Size = new System.Drawing.Size(544, 193);
-            this.DgvCustomers.TabIndex = 6;
+            this.Column3.HeaderText = "Count";
+            this.Column3.Name = "Column3";
             // 
-            // textBox1
+            // Column4
             // 
-            this.textBox1.Location = new System.Drawing.Point(220, 162);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(126, 20);
-            this.textBox1.TabIndex = 13;
+            this.Column4.HeaderText = "Price";
+            this.Column4.Name = "Column4";
             // 
-            // LblNBCount
+            // TxtSearchBook
             // 
-            this.LblNBCount.AutoSize = true;
-            this.LblNBCount.Location = new System.Drawing.Point(217, 136);
-            this.LblNBCount.Name = "LblNBCount";
-            this.LblNBCount.Size = new System.Drawing.Size(35, 13);
-            this.LblNBCount.TabIndex = 12;
-            this.LblNBCount.Text = "Count";
+            this.TxtSearchBook.Location = new System.Drawing.Point(40, 366);
+            this.TxtSearchBook.Name = "TxtSearchBook";
+            this.TxtSearchBook.Size = new System.Drawing.Size(159, 20);
+            this.TxtSearchBook.TabIndex = 15;
+            this.TxtSearchBook.TextChanged += new System.EventHandler(this.TxtSearchBook_TextChanged);
+            // 
+            // LblSearchBook
+            // 
+            this.LblSearchBook.Font = new System.Drawing.Font("Papyrus", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblSearchBook.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.LblSearchBook.Location = new System.Drawing.Point(53, 323);
+            this.LblSearchBook.Name = "LblSearchBook";
+            this.LblSearchBook.Size = new System.Drawing.Size(128, 40);
+            this.LblSearchBook.TabIndex = 16;
+            this.LblSearchBook.Text = "Search";
+            this.LblSearchBook.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Books
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.TxtSearchBook);
+            this.Controls.Add(this.LblSearchBook);
             this.Controls.Add(this.BtnUpdateBook);
             this.Controls.Add(this.BtnDeleteBook);
-            this.Controls.Add(this.PnlAddNC);
+            this.Controls.Add(this.PnlNewBook);
             this.Controls.Add(this.BtnNewBook);
             this.Controls.Add(this.LblBooks);
-            this.Controls.Add(this.DgvCustomers);
+            this.Controls.Add(this.DgvBooks);
             this.Name = "Books";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Books";
-            this.PnlAddNC.ResumeLayout(false);
-            this.PnlAddNC.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvCustomers)).EndInit();
+            this.PnlNewBook.ResumeLayout(false);
+            this.PnlNewBook.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvBooks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,23 +287,23 @@
         private System.Windows.Forms.Button BtnUpdateBook;
         private System.Windows.Forms.Button BtnDeleteBook;
         private System.Windows.Forms.Button BtnBookUpd;
-        private System.Windows.Forms.Panel PnlAddNC;
-        private System.Windows.Forms.Button BtnNCClose;
-        private System.Windows.Forms.Button BtnAddNB;
-        private System.Windows.Forms.TextBox TxtNCSurname;
+        private System.Windows.Forms.Panel PnlNewBook;
+        private System.Windows.Forms.Button BtnNBClose;
+        private System.Windows.Forms.Button BtnAddNewBook;
+        private System.Windows.Forms.TextBox TxtNBPrice;
         private System.Windows.Forms.Label LblNBPrice;
-        private System.Windows.Forms.TextBox TxtNCName;
+        private System.Windows.Forms.TextBox TxtNBName;
         private System.Windows.Forms.Label LblNCName;
         private System.Windows.Forms.Button BtnNewBook;
         private System.Windows.Forms.Label LblBooks;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridView DgvBooks;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridView DgvCustomers;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.TextBox TxtNBCount;
         private System.Windows.Forms.Label LblNBCount;
+        private System.Windows.Forms.TextBox TxtSearchBook;
+        private System.Windows.Forms.Label LblSearchBook;
     }
 }

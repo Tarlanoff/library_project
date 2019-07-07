@@ -18,7 +18,8 @@ namespace library_project.Forms
 
         private readonly LibraryContext _context;
 
-        private Book SelectedBook;
+        private library_project.Models.Book SelectedBook;
+
 
         public Dashboard()
         {
@@ -27,25 +28,10 @@ namespace library_project.Forms
             _context = new LibraryContext();
         }
 
-        private void BtnNewOrder_Click(object sender, EventArgs e)
-        {
-            PnlNewOrder.Visible = true;
-
-            FillCustomerList();
-            FillBookList();
-            CalcPriceWithReturnDate();
+       
 
 
-            TxtPrice.Text = "0";
-        }
-
-        private void DTPReturnTime_ValueChanged(object sender, EventArgs e)
-        {
-            CalcPriceWithReturnDate();
-        }
-
-
-        #region logout, exit function
+        //logout
         private void BtnLogout_Click(object sender, EventArgs e)
         {
             Login login = new Login();
@@ -54,6 +40,7 @@ namespace library_project.Forms
             this.Hide();
         }
 
+        //app close
         private void Dashboard_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
@@ -61,20 +48,20 @@ namespace library_project.Forms
 
 
 
-        #endregion
+        
 
 
-        #region fill functions
-
+        
+        //istifadecilerin adi soyadi
         private void FillCustomerList()
         {
             foreach (var customer in _context.Customers.ToList())
             {
-                CmbNOCustomer.Items.Add(customer.Name + customer.Surname);
+                CmbNOCustomer.Items.Add(customer.Name + " " + customer.Surname);
             }
         }
 
-
+        //kitablarin adi
         private void FillBookList()
         {
             foreach (var book in _context.Books.ToList())
@@ -82,67 +69,112 @@ namespace library_project.Forms
                 CmbNOBook.Items.Add(book.Name);
             }
         }
-        #endregion
 
 
-        #region calculate function
+       
+
+
+        //qiymet hesabati
         private void CalcPriceWithReturnDate()
         {
-            CmbNOBook.SelectedIndex = 0;
+            
             int id = _context.Books.FirstOrDefault(b => b.Name == CmbNOBook.Text).Id;
 
             SelectedBook = _context.Books.Find(id);
 
-            if (DTPReturnTime.Value <= DateTime.Now.AddDays(7))
+            if (DTPNOReturnTime.Value <= DateTime.Now.AddDays(7))
             {
                 TxtPrice.Text = SelectedBook.PricePerMonth.ToString();
             }
-            if (DTPReturnTime.Value > DateTime.Now.AddDays(7) && DTPReturnTime.Value <= DateTime.Now.AddDays(14))
+            if (DTPNOReturnTime.Value > DateTime.Now.AddDays(7) && DTPNOReturnTime.Value <= DateTime.Now.AddDays(14))
             {
                 TxtPrice.Text = (SelectedBook.PricePerMonth * 2).ToString();
             }
-            if (DTPReturnTime.Value>DateTime.Now.AddDays(14) && DTPReturnTime.Value <= DateTime.Now.AddDays(21))
+            if (DTPNOReturnTime.Value>DateTime.Now.AddDays(14) && DTPNOReturnTime.Value <= DateTime.Now.AddDays(21))
             {
                 TxtPrice.Text = (SelectedBook.PricePerMonth * 3).ToString();
             }
-            if (DTPReturnTime.Value > DateTime.Now.AddDays(21) && DTPReturnTime.Value <= DateTime.Now.AddDays(28))
+            if (DTPNOReturnTime.Value > DateTime.Now.AddDays(21) && DTPNOReturnTime.Value <= DateTime.Now.AddDays(28))
             {
                 TxtPrice.Text = (SelectedBook.PricePerMonth * 4).ToString();
             }
-            if (DTPReturnTime.Value > DateTime.Now.AddMonths(1) && DTPReturnTime.Value <= DateTime.Now.AddMonths(2))
+            if (DTPNOReturnTime.Value > DateTime.Now.AddMonths(1) && DTPNOReturnTime.Value <= DateTime.Now.AddMonths(2))
             {
                 TxtPrice.Text = (SelectedBook.PricePerMonth * 6).ToString();
             }
 
         }
+        
 
-        #endregion
-
-
-        private void ResetOrderForm()
-        {
-            CmbNOBook.SelectedIndex = 0;
-            CmbNOCustomer.Text = string.Empty;
-            DTPReturnTime.Value = DateTime.Now;
-            TxtPrice.Text = "0";
-        }
-
-        private void BtnNOAccept_Click(object sender, EventArgs e)
-        {
-            ResetOrderForm();
-            PnlNewOrder.Visible = false;
-            
-        }
-
+        //customers list
         private void BtnNewCustomer_Click(object sender, EventArgs e)
         {
             Customer customer = new Customer();
-            customer.Show();
+            customer.ShowDialog();
         }
 
+        //books list
+        private void BtnBooks_Click(object sender, EventArgs e)
+        {
+            Books books = new Books();
+            books.ShowDialog();
+            
+        }
+
+        //admins list
+        private void BtnAdmins_Click(object sender, EventArgs e)
+        {
+
+            Admin admin = new Admin();
+            admin.ShowDialog();
+        }
+
+        //new order form
+        private void BtnNewOrder_Click(object sender, EventArgs e)
+        {
+            PnlNewOrder.Visible = true;
+            
+            FillBookList();
+            FillCustomerList();
+
+        }
+
+        //close new order form
         private void BtnOrderClose_Click(object sender, EventArgs e)
         {
+           
+            PnlNewOrder.Visible = false;
+            CmbNOBook.Items.Clear();
+            CmbNOCustomer.Items.Clear();
+            
+        }
+
+
+        //accept new order
+        private void BtnNOAccept_Click(object sender, EventArgs e)
+        {
+            Order NewOrder = new Order
+            {
+                CustomerId = _context.Customers.FirstOrDefault(c => c.Name + " " + c.Surname == CmbNOCustomer.Text).Id,
+                BookId = _context.Books.FirstOrDefault(b => b.Name == CmbNOBook.Text).Id,
+                Price = Convert.ToDecimal(TxtPrice.Text),
+                RentAt = DateTime.Now,
+                ReturnAt = DTPNOReturnTime.Value
+            };
+            _context.Orders.Add(NewOrder);
+            _context.SaveChanges();
+
+            CmbNOBook.Items.Clear();
+            CmbNOCustomer.Items.Clear();
             PnlNewOrder.Visible = false;
         }
+
+        //calculate price
+        private void DTPNOReturnTime_ValueChanged(object sender, EventArgs e)
+        {
+            CalcPriceWithReturnDate();
+        }
+
+        
     }
 }

@@ -38,6 +38,7 @@
             this.LblCustomers = new System.Windows.Forms.Label();
             this.BtnNewCustomer = new System.Windows.Forms.Button();
             this.PnlAddNC = new System.Windows.Forms.Panel();
+            this.BtnCustomerUpd = new System.Windows.Forms.Button();
             this.BtnNCClose = new System.Windows.Forms.Button();
             this.DTPBirthday = new System.Windows.Forms.DateTimePicker();
             this.BtnAddNC = new System.Windows.Forms.Button();
@@ -50,13 +51,15 @@
             this.LblNCName = new System.Windows.Forms.Label();
             this.BtnDeleteCustomer = new System.Windows.Forms.Button();
             this.BtnUpdateCustomer = new System.Windows.Forms.Button();
-            this.BtnCustomerUpd = new System.Windows.Forms.Button();
+            this.TxtSearchCustomer = new System.Windows.Forms.TextBox();
+            this.LblSearchCustomer = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DgvCustomers)).BeginInit();
             this.PnlAddNC.SuspendLayout();
             this.SuspendLayout();
             // 
             // DgvCustomers
             // 
+            this.DgvCustomers.AllowUserToAddRows = false;
             this.DgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -142,11 +145,23 @@
             this.PnlAddNC.Controls.Add(this.LblNCSurname);
             this.PnlAddNC.Controls.Add(this.TxtNCName);
             this.PnlAddNC.Controls.Add(this.LblNCName);
-            this.PnlAddNC.Location = new System.Drawing.Point(204, 64);
+            this.PnlAddNC.Location = new System.Drawing.Point(204, 87);
             this.PnlAddNC.Name = "PnlAddNC";
             this.PnlAddNC.Size = new System.Drawing.Size(544, 359);
             this.PnlAddNC.TabIndex = 3;
             this.PnlAddNC.Visible = false;
+            // 
+            // BtnCustomerUpd
+            // 
+            this.BtnCustomerUpd.BackColor = System.Drawing.Color.OrangeRed;
+            this.BtnCustomerUpd.Location = new System.Drawing.Point(216, 284);
+            this.BtnCustomerUpd.Name = "BtnCustomerUpd";
+            this.BtnCustomerUpd.Size = new System.Drawing.Size(126, 55);
+            this.BtnCustomerUpd.TabIndex = 11;
+            this.BtnCustomerUpd.Text = "Update Customer Information";
+            this.BtnCustomerUpd.UseVisualStyleBackColor = false;
+            this.BtnCustomerUpd.Visible = false;
+            this.BtnCustomerUpd.Click += new System.EventHandler(this.BtnCustomerUpd_Click);
             // 
             // BtnNCClose
             // 
@@ -258,17 +273,24 @@
             this.BtnUpdateCustomer.UseVisualStyleBackColor = false;
             this.BtnUpdateCustomer.Click += new System.EventHandler(this.BtnUpdateCustomer_Click);
             // 
-            // BtnCustomerUpd
+            // TxtSearchCustomer
             // 
-            this.BtnCustomerUpd.BackColor = System.Drawing.Color.OrangeRed;
-            this.BtnCustomerUpd.Location = new System.Drawing.Point(216, 284);
-            this.BtnCustomerUpd.Name = "BtnCustomerUpd";
-            this.BtnCustomerUpd.Size = new System.Drawing.Size(126, 55);
-            this.BtnCustomerUpd.TabIndex = 11;
-            this.BtnCustomerUpd.Text = "Update Customer Information";
-            this.BtnCustomerUpd.UseVisualStyleBackColor = false;
-            this.BtnCustomerUpd.Visible = false;
-            this.BtnCustomerUpd.Click += new System.EventHandler(this.BtnCustomerUpd_Click);
+            this.TxtSearchCustomer.Location = new System.Drawing.Point(27, 346);
+            this.TxtSearchCustomer.Name = "TxtSearchCustomer";
+            this.TxtSearchCustomer.Size = new System.Drawing.Size(159, 20);
+            this.TxtSearchCustomer.TabIndex = 13;
+            this.TxtSearchCustomer.TextChanged += new System.EventHandler(this.TxtSearchCustomer_TextChanged);
+            // 
+            // LblSearchCustomer
+            // 
+            this.LblSearchCustomer.Font = new System.Drawing.Font("Papyrus", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblSearchCustomer.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.LblSearchCustomer.Location = new System.Drawing.Point(44, 303);
+            this.LblSearchCustomer.Name = "LblSearchCustomer";
+            this.LblSearchCustomer.Size = new System.Drawing.Size(128, 40);
+            this.LblSearchCustomer.TabIndex = 14;
+            this.LblSearchCustomer.Text = "Search";
+            this.LblSearchCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Customer
             // 
@@ -276,6 +298,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.TxtSearchCustomer);
+            this.Controls.Add(this.LblSearchCustomer);
             this.Controls.Add(this.BtnUpdateCustomer);
             this.Controls.Add(this.BtnDeleteCustomer);
             this.Controls.Add(this.PnlAddNC);
@@ -319,5 +343,7 @@
         private System.Windows.Forms.Button BtnDeleteCustomer;
         private System.Windows.Forms.Button BtnUpdateCustomer;
         private System.Windows.Forms.Button BtnCustomerUpd;
+        private System.Windows.Forms.TextBox TxtSearchCustomer;
+        private System.Windows.Forms.Label LblSearchCustomer;
     }
 }

@@ -25,6 +25,7 @@ namespace library_project.Forms
             _context = new LibraryContext();
         }
 
+        //logging in func and val
         private void BtnLogin_Click(object sender, EventArgs e)
         {
 
@@ -53,6 +54,7 @@ namespace library_project.Forms
             }
         }
 
+        //closing event
         private void Login_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
