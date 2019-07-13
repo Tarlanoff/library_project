@@ -31,26 +31,21 @@ namespace library_project.Forms
 
             if (!_context.Admins.Any(a => a.Nickname == TxtNickname.Text))
             {
-                
                 MessageBox.Show("Nickname və ya Password düzgün daxil edilməyib!");
                 return;
             }
 
-            if (!_context.Admins.Any(a => a.Password == TxtPassword.Text))
+            if (_context.Admins.Any(a => a.Nickname == TxtNickname.Text && a.Password == TxtPassword.Text))
             {
-                
-                MessageBox.Show("Nickname və ya Password düzgün daxil edilməyib!");
-                return;
+                Dashboard dashboard = new Dashboard();
+                this.Hide();
+                dashboard.Show();
             }
 
             else
             {
-
-                
-                Dashboard dashboard = new Dashboard();
-                this.Hide();
-                dashboard.Show();
-
+                MessageBox.Show("Nickname və ya Password düzgün daxil edilməyib!");
+                return;
             }
         }
 
